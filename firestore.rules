@@ -1,0 +1,65 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // Admin = existe um documento em admins/{uid do usuário}. Quem entra no app só vê as
+    // ferramentas de edição se isto for verdade, mas a proteção real é esta regra.
+    function isAdmin() {
+      return request.auth != null
+        && exists(/databases/$(database)/documents/admins/$(request.auth.uid));
+    }
+
+    // ---------- PÚBLICO: qualquer pessoa lê, só admin escreve ----------
+    match /players/{id} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
+    match /matches/{id} {
+      allow read: if true;
+      allow write: if isAdmin();
+
+      match /photos/{photoId} {
+        allow read: if true;
+        allow write: if isAdmin();
+      }
+    }
+
+    match /championships/{id} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
+    // Patrocinadores: nome, logo e para o que ajudam são públicos (vitrine do site)
+    match /sponsors/{id} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
+    // ---------- PRIVADO: só admin lê e escreve (quem pagou, quem deve, valores) ----------
+    match /matchFinance/{id} {
+      allow read, write: if isAdmin();
+    }
+
+    match /championshipFinance/{id} {
+      allow read, write: if isAdmin();
+    }
+
+    // Aportes dos patrocinadores, contato e anotações internas
+    match /sponsorFinance/{id} {
+      allow read, write: if isAdmin();
+    }
+
+    // Cada pessoa só consegue ler o próprio documento. Ninguém escreve por aqui:
+    // os admins são criados à mão, pelo console do Firebase.
+    match /admins/{uid} {
+      allow read: if request.auth != null && request.auth.uid == uid;
+      allow write: if false;
+    }
+
+    // Qualquer outra coleção: negado.
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}
