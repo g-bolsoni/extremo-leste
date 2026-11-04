@@ -7,6 +7,7 @@ import '@fontsource/permanent-marker/latin-400.css'
 import '@fontsource/barlow/latin-500.css'
 import '@fontsource/barlow/latin-600.css'
 import '@fontsource/barlow/latin-700.css'
+import '@fontsource/rubik-wet-paint/latin-400.css'
 import './style.css'
 
 initStore()

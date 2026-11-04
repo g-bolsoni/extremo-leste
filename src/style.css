@@ -19,6 +19,7 @@
   --f-display: 'Anton', Impact, 'Arial Narrow Bold', sans-serif;
   --f-marker: 'Permanent Marker', 'Comic Sans MS', cursive;
   --f-body: 'Barlow', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --f-graffiti: 'Rubik Wet Paint', 'Anton', Impact, sans-serif;
   font-family: var(--f-body);
   color: var(--text);
   color-scheme: dark;
@@ -102,14 +103,14 @@ button, input, select, textarea { font: inherit; color: inherit; }
 .hero { position: relative; overflow: hidden; padding: 22px 16px 0; margin: 0; text-align: center; border-bottom: 1px solid var(--line); background: linear-gradient(180deg, rgba(224,22,31,.0), rgba(224,22,31,.18)); }
 .hero .tag, .hero .motto { color: var(--text); }
 .hero .tag { font-family: var(--f-marker); font-size: .95rem; transform: rotate(-2deg); display: inline-block; }
-.hero h2 { display: flex; flex-direction: column; align-items: center; line-height: .86; margin: 6px 0 0; transform: skewX(-7deg) rotate(-1.5deg); }
-.hero h2 .w { font-family: var(--f-display); font-size: clamp(3.4rem, 17vw, 5.6rem); color: var(--text); letter-spacing: .01em; text-shadow: 3px 3px 0 rgba(0,0,0,.6); }
-.hero h2 .r { font-family: var(--f-display); font-size: clamp(4.4rem, 22vw, 7.2rem); color: var(--red); letter-spacing: .02em; margin-top: -4px; text-shadow: 3px 3px 0 rgba(0,0,0,.7); }
-.hero .motto { font-family: var(--f-marker); font-size: .95rem; margin: 10px 0 0; position: relative; z-index: 1; }
+.hero h2 { display: flex; flex-direction: column; align-items: center; line-height: .86; margin: 6px 0 0; transform: none; }
+.hero h2 .w { font-family: var(--f-graffiti); font-size: clamp(3rem, 15vw, 5rem); color: var(--text); letter-spacing: .01em; -webkit-text-stroke: 2px #000; paint-order: stroke fill; text-shadow: 4px 4px 0 #000; transform: rotate(-3deg); }
+.hero h2 .r { font-family: var(--f-graffiti); font-size: clamp(4rem, 20vw, 6.6rem); color: var(--red); letter-spacing: .02em; margin-top: -2px; -webkit-text-stroke: 2px #000; paint-order: stroke fill; text-shadow: 4px 4px 0 #000; transform: rotate(2deg); }
+.hero .motto { font-family: var(--f-marker); font-size: .95rem; margin: 22px 0 0; position: relative; z-index: 1; }
 .hero .motto::after { content: ''; display: block; height: 2px; width: 62%; margin: 6px auto 0; background: var(--red); transform: rotate(-1deg); }
 .hero .next { position: relative; z-index: 1; margin-top: 14px; font-size: .85rem; color: var(--muted); }
 .hero .next b { color: var(--text); text-transform: uppercase; letter-spacing: .03em; }
-.skyline { display: block; width: 100%; height: 96px; margin-top: 6px; }
+.skyline { display: block; width: 100%; height: 170px; margin-top: 6px; }
 .footer-motto { text-align: center; font-family: var(--f-marker); font-size: 1rem; line-height: 1.3; padding: 8px 12px 0; }
 .footer-motto em { color: var(--red-text); font-style: normal; display: block; }
 /* na home, o slogan fica à esquerda para não ficar embaixo do botão flutuante */
@@ -229,9 +230,9 @@ a.sponsor:active .plate { transform: translate(2px, 2px); box-shadow: 1px 1px 0 
 
 .sponsor-hero { text-align: center; display: flex; flex-direction: column; gap: 8px; padding: 6px 0 2px; }
 .sponsor-hero .tag { font-family: var(--f-marker); font-size: .95rem; transform: rotate(-2deg); display: inline-block; color: var(--text); }
-.sponsor-hero h2 { display: flex; flex-direction: column; align-items: center; line-height: .88; transform: skewX(-7deg) rotate(-1.5deg); }
-.sponsor-hero h2 .w { font-family: var(--f-display); font-size: clamp(2.6rem, 13vw, 3.8rem); color: var(--text); text-shadow: 3px 3px 0 rgba(0,0,0,.6); }
-.sponsor-hero h2 .r { font-family: var(--f-display); font-size: clamp(3.2rem, 16vw, 4.8rem); color: var(--red); text-shadow: 3px 3px 0 rgba(0,0,0,.7); }
+.sponsor-hero h2 { display: flex; flex-direction: column; align-items: center; line-height: .88; margin-bottom: 14px; transform: rotate(-1.5deg); }
+.sponsor-hero h2 .w { font-family: var(--f-graffiti); font-size: clamp(2.4rem, 12vw, 3.4rem); color: var(--text); -webkit-text-stroke: 2px #000; paint-order: stroke fill; text-shadow: 3px 3px 0 #000; }
+.sponsor-hero h2 .r { font-family: var(--f-graffiti); font-size: clamp(3rem, 15vw, 4.4rem); color: var(--red); -webkit-text-stroke: 2px #000; paint-order: stroke fill; text-shadow: 4px 4px 0 #000; }
 
 .chips { display: flex; gap: 8px; overflow-x: auto; padding-bottom: 2px; }
 .chips button { flex: none; border: 1px solid #3a3a3a; background: var(--card); border-radius: 999px; padding: 8px 14px; font-family: var(--f-display); text-transform: uppercase; letter-spacing: .06em; font-size: .85rem; color: var(--muted); cursor: pointer; }
